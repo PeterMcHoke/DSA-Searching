@@ -1,13 +1,13 @@
 const Queue = require('../stacks-queues/Queue')
 
 const binarySearch = (arr, value, start, end) => {
-    const start = (start === undefined ? 0 : start)
-    const end = (end === undefined ? 0 : end)
-
+    var start = (start === undefined ? 0 : start)
+    var end = (end === undefined ? arr.length : end)
+    console.table(arr.slice(start, end+1))
     //if we are ever out of bounds, we didn't find the element
     if (start > end)
         return -1
-    
+    //So you always land on the value at the end of the fist half
     const index = Math.floor((start + end) / 2)
     const item = arr[index];
 
@@ -17,10 +17,10 @@ const binarySearch = (arr, value, start, end) => {
         //if our current item is less than the value we are looking for, set our search parameters to one element to the right and keep the end. 
         //by calling BST recursively we will find the new index between index +1 and end and then run the same calculations...
         //returning item whenever item === value
-        return binarySearchTree(arr, value, index + 1, end)
+        return binarySearch(arr, value, index + 1, end)
     }
     else if (item > value) {
-        return binarySearchTree(arr, value, start, index - 1)
+        return binarySearch(arr, value, start, index - 1)
     }
 }
 
@@ -54,3 +54,11 @@ const BFS = (tree, values = []) => {
     }
     return values;
 }
+
+
+const main = (() => {
+    const list = [3, 5, 6, 8, 11, 12, 14, 15, 17, 18];
+    //1. How many searches?
+    //binarySearch(list, 8); // 3 recursive calls before returning 8
+    binarySearch(list, 16);
+})()
