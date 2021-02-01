@@ -1,4 +1,5 @@
 const Queue = require('../stacks-queues/Queue')
+const BST = require('../binary-search-trees/BST')
 
 const binarySearch = (arr, value, start, end) => {
     var start = (start === undefined ? 0 : start)
@@ -60,5 +61,12 @@ const main = (() => {
     const list = [3, 5, 6, 8, 11, 12, 14, 15, 17, 18];
     //1. How many searches?
     //binarySearch(list, 8); // 3 recursive calls before returning 8
-    binarySearch(list, 16);
+    //binarySearch(list, 16);
+
+    const tree = new BST();
+    const data = ['25', '15', '50', '10', '24', '35', '70', '4','12', '18', '31', '44','66', '90', '22']
+    data.forEach(num => tree.insert(parseInt(num)))
+    console.log(tree.printInOrder());
+    console.log(tree.printPreOrder());
+    console.log(tree.printPostOrder());
 })()
