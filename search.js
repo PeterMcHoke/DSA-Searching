@@ -56,6 +56,31 @@ const BFS = (tree, values = []) => {
     return values;
 }
 
+function commandStructure() {
+    const bst = new BST(5, 'Captain Picard');
+
+    bst.insert(3, 'Commander Riker');
+    bst.insert(6, 'Data');
+    bst.insert(2, 'Worf');
+    bst.insert(4, 'Laforge');
+    bst.insert(1, 'security-officer');
+    bst.insert(8, 'Crusher');
+    bst.insert(7, 'Selar');
+    return bst.bfs([]);
+}
+
+function maxProfit(arr) {
+    let max = 0;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] - arr[i] > max) {
+                max = arr[i];
+            }
+        }
+    }
+    return max;
+}
+
 
 const main = (() => {
     const list = [3, 5, 6, 8, 11, 12, 14, 15, 17, 18];
@@ -66,7 +91,11 @@ const main = (() => {
     const tree = new BST();
     const data = ['25', '15', '50', '10', '24', '35', '70', '4','12', '18', '31', '44','66', '90', '22']
     data.forEach(num => tree.insert(parseInt(num)))
-    console.log(tree.printInOrder());
-    console.log(tree.printPreOrder());
-    console.log(tree.printPostOrder());
+    // tree.printInOrder();
+    // tree.printInOrder();
+    // tree.printPreOrder();
+    // tree.printPostOrder();
+    console.log(commandStructure())
+
+    console.log(maxProfit([128, 97, 121, 123, 98, 97, 105]))
 })()
